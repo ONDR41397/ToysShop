@@ -24,7 +24,7 @@ public class Item {
 	// 商品説明
 	@NotBlank
 	@Size(max=300)
-	private String desc;
+	private String descript;
 	
 	// 商品画像
 	private String pict;

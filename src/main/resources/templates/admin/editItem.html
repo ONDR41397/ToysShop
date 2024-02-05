@@ -3,7 +3,7 @@
 <head th:replace="~{parts/common :: html_head()}"></head>
 <body>
 	<div class="container">
-		<h1 class="my-4 h3">商品登録</h1>
+		<h1 class="my-4 h3">商品編集</h1>
 		<div class="row">
 			<div class="col-md-12">
 				<form action="" method="post" th:object="${item}"
@@ -41,22 +41,5 @@
 	</div>
 	<!-- /.container -->
 	<th:block th:replace="~{parts/common :: javascripts()}"></th:block>
-<!-- <script>
-		const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
-		$('#form').on('submit', (event) => {
-			 const file = $('#pict')[0].files[0];
-			 if (file != undefined && file.size >= MAX_FILE_SIZE) {
-				 // 送信しない
-				 event.preventDefault();
-				 // エラーメッセージを含む span 要素を生成
-				 const errorMessage = $('<span>');
-				 errorMessage.addClass('error');
-				 errorMessage.text('ファイルサイズが大き過ぎます');
-				 // input タグの親要素(p 要素)の前にメッセージを出力
-				 $('#pict').parent().before(errorMessage);
-			 }
-		});
-	</script>
- -->	
 </body>
-</html>
+</html>S

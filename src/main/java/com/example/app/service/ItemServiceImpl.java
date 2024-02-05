@@ -28,7 +28,14 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public void addItem(Item item) throws Exception {
-		itemDao.insert(item);
+		
+		/*
+		 * MultipartFile upfile = item.getPict(); if (!upfile.isEmpty()) { String photo
+		 * = upfile.getOriginalFilename(); // 画像ファイルの保存 Path path = Paths.get("uploads/"
+		 * + photo); upfile.transferTo(path); }
+		 */
+		 
+		 itemDao.insert(item);
 	}
 
 	@Override

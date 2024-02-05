@@ -35,7 +35,7 @@
 						<td>[[${item.id}]]</td>
 						<td>[[${item.name}]]</td>
 						<td>[[${#dates.format(item.created, 'yyyy-MM-dd HH:mm:ss')}]]</td>
-						<td><a href="" class="btn btn-success btn-sm">編集</a></td>
+						<td><a th:href="@{/admin/editItem/{id}(id=${item.id})}" class="btn btn-success btn-sm">編集</a></td>
 						<td><a href="" class="btn btn-danger btn-sm delete">削除</a></td>
 					</tr>
 				</table>

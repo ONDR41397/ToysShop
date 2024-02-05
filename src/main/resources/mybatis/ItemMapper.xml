@@ -8,22 +8,20 @@
 		status = 'ACT';
 	</select>
 
-	<select id="selectById" parameterType="int"
-		resultType="com.example.app.domain.Item">
-		SELECT * FROM items WHERE status = 'ACT'
+	<select id="selectById" parameterType="int" resultType="com.example.app.domain.Item">
+		SELECT name, price, descript, pict FROM items WHERE status = 'ACT'
 		AND id = #{id}
 	</select>
 
 	<select id="insert" resultType="com.example.app.domain.Item">
 		INSERT INTO items (name, price,
 		descript, pict, status, created)
-		VALUES (#{name}, #{price}, #{desc}, #{pict}, 'ACT', NOW())
+		VALUES (#{name}, #{price}, #{descript}, #{pict}, 'ACT', NOW())
 	</select>
 
 	<select id="update" resultType="com.example.app.domain.Item">
-		UPDATE task_list
-		SET title =
-		#{title}, content = #{content}, duedate = #{dueDate}
+		UPDATE items
+		SET name = #{name}, price = #{price}, descript = #{descript}, pict = #{pict}
 		WHERE id = #{id}
 	</select>
 
