@@ -3,6 +3,7 @@ package com.example.app.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.example.app.domain.Item;
 
@@ -23,5 +24,9 @@ public interface ItemDao {
 
 	// 商品の削除
 	void delete(Integer id) throws Exception;
+	
+	// ページ分割機能用
+	Long count() throws Exception;
+	List<Item> selectLimited(@Param("offset") int offset, @Param("num") int num) throws Exception;
 
 }

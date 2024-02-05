@@ -15,4 +15,8 @@ public interface ItemService {
 	void editItem(Item item) throws Exception;
 
 	void deleteItem(Integer id) throws Exception;
+
+	// ページ分割機能用
+	int getTotalPages(int numPerPage) throws Exception;
+	List<Item> getItemListByPage(int page, int numPerPage) throws Exception;
 }

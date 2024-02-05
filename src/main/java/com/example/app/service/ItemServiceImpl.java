@@ -41,4 +41,16 @@ public class ItemServiceImpl implements ItemService {
 		itemDao.delete(id);
 	}
 
+	@Override
+	public int getTotalPages(int numPerPage) throws Exception {
+		double totalNum = (double) itemDao.count();
+		return (int) Math.ceil(totalNum / numPerPage); 
+	}
+
+	@Override
+	public List<Item> getItemListByPage(int page, int numPerPage) throws Exception {
+		int offset = numPerPage * (page - 1);
+		return itemDao.selectLimited(offset, numPerPage);
+	}
+
 }
