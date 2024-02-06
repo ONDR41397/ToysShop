@@ -2,6 +2,8 @@ package com.example.app.domain;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -34,4 +36,7 @@ public class Item {
 	
 	// 登録日
 	private Date created;
+	
+	// 画像のアップロード
+	private MultipartFile upfile;
 }
