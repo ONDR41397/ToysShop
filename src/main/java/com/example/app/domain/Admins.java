@@ -1,5 +1,6 @@
 package com.example.app.domain;
 
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
@@ -12,9 +13,11 @@ public class Admins {
 	private String name;
 	
 	// ユーザーID
+	@Size(max=20)
 	private String userId;
 	
 	// パスワード
+	@Size(max=60)
 	private String pass;
 	
 	// ログイン権限
