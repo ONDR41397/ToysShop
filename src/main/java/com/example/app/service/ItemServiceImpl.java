@@ -35,6 +35,8 @@ public class ItemServiceImpl implements ItemService {
 		MultipartFile upfile = item.getUpfile();
 		if (!upfile.isEmpty()) {
 			String photo = upfile.getOriginalFilename();
+			// テーブルに画像ファイル名格納
+			item.setPict(photo);
 			// 画像ファイルの保存
 			Path path = Paths.get("uploads/" + photo);
 			upfile.transferTo(path);

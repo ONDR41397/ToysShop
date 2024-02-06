@@ -11,7 +11,8 @@
 					<p>
 						<small class="alert alert-danger" th:errors="*{name}"></small> <small
 							class="alert alert-danger" th:errors="*{price}"></small> <small
-							class="alert alert-danger" th:errors="*{descript}"></small>
+							class="alert alert-danger" th:errors="*{descript}"></small> <small
+							class="alert alert-danger" th:errors="*{upfile}"></small>
 					</p>
 					<table class="table table-bordered">
 						<tr>
@@ -28,7 +29,7 @@
 						</tr>
 						<tr>
 							<th>画像</th>
-							<td><input type="file" th:field="*{pict}" id="upfile"></td>
+							<td><input type="file" th:field="*{upfile}" id="upfile"></td>
 						</tr>
 					</table>
 					<input type="submit" value="保存" class="btn btn-primary"> <a
@@ -41,7 +42,7 @@
 	</div>
 	<!-- /.container -->
 	<th:block th:replace="~{parts/common :: javascripts()}"></th:block>
-	<!--<script>
+	<script>
 	const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 	$('#form').on('submit', (event) => {
 		 const file = $('#upfile')[0].files[0];
@@ -49,13 +50,13 @@
 			 // 送信しない
 			 event.preventDefault();
 			 // エラーメッセージを含む span 要素を生成
-			 const errorMessage = $('<span>');
+			 const errorMessage = $('<small>');
 			 errorMessage.addClass('error');
 			 errorMessage.text('ファイルサイズが大き過ぎます');
 			 // input タグの親要素(p 要素)の前にメッセージを出力
 			 $('#upfile').parent().before(errorMessage);
 		 }
 	});
-</script>-->
+</script>
 </body>
 </html>
