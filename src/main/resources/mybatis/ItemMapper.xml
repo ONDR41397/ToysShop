@@ -36,7 +36,7 @@
 	</select>
 	<select id="selectLimited"
 		resultType="com.example.app.domain.Item">
-		SELECT * FROM items LIMIT #{offset}, #{num}
+		SELECT * FROM items WHERE status = 'ACT' LIMIT #{offset}, #{num}
 	</select>
 
 </mapper>	

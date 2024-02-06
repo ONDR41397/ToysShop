@@ -43,8 +43,8 @@ public class ItemController {
 	public String addItemPost(@Valid Item item, Errors errors, RedirectAttributes redirectAttributes) throws Exception {
 
 		/*
-		 * // バリデーション MultipartFile upfile = item.getPict(); if (!upfile.isEmpty()) { //
-		 * 画像か否か判定する String type = upfile.getContentType(); if
+		 * // バリデーション MultipartFile upfile = item.getUpfile(); if (!upfile.isEmpty()) {
+		 * // 画像か否か判定する String type = upfile.getContentType(); if
 		 * (!type.startsWith("image/")) { // 画像ではない場合、エラーメッセージを表示
 		 * errors.rejectValue("upfile", "error.not_image_file"); } }
 		 */
@@ -57,15 +57,16 @@ public class ItemController {
 		redirectAttributes.addFlashAttribute("message", "商品を登録しました");
 		return "redirect:/admin/itemList";
 	}
-	
+
 	@GetMapping("/admin/editItem/{id}")
-	public String editItemGet(@PathVariable Integer id,  Model model) throws Exception {
+	public String editItemGet(@PathVariable Integer id, Model model) throws Exception {
 		model.addAttribute("item", service.getItemById(id));
 		return "admin/editItem";
 	}
 
 	@PostMapping("/admin/editItem/{id}")
-	public String editItemPost(@PathVariable Integer id, @Valid Item item, Errors errors, RedirectAttributes redirectAttributes) throws Exception {
+	public String editItemPost(@PathVariable Integer id, @Valid Item item, Errors errors,
+			RedirectAttributes redirectAttributes) throws Exception {
 
 		if (errors.hasErrors()) {
 			return "admin/editItem";
@@ -73,6 +74,15 @@ public class ItemController {
 
 		service.editItem(item);
 		redirectAttributes.addFlashAttribute("message", "商品を更新しました");
+		return "redirect:/admin/itemList";
+	}
+
+	@GetMapping("/admin/deleteItem/{id}")
+	public String deleteItem(@PathVariable Integer id, Model model, RedirectAttributes redirectAttributes)
+			throws Exception {
+		model.addAttribute("item", service.getItemById(id));
+		service.deleteItem(id);
+		redirectAttributes.addFlashAttribute("message", "商品を削除しました");
 		return "redirect:/admin/itemList";
 	}
 }

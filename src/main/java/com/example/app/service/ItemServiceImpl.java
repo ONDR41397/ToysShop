@@ -1,10 +1,13 @@
 package com.example.app.service;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.app.dao.ItemDao;
 import com.example.app.domain.Item;
@@ -12,7 +15,7 @@ import com.example.app.domain.Item;
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class ItemServiceImpl implements ItemService {
-	
+
 	@Autowired
 	ItemDao itemDao;
 
@@ -28,14 +31,16 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public void addItem(Item item) throws Exception {
-		
-		/*
-		 * MultipartFile upfile = item.getPict(); if (!upfile.isEmpty()) { String photo
-		 * = upfile.getOriginalFilename(); // 画像ファイルの保存 Path path = Paths.get("uploads/"
-		 * + photo); upfile.transferTo(path); }
-		 */
-		 
-		 itemDao.insert(item);
+
+		MultipartFile upfile = item.getUpfile();
+		if (!upfile.isEmpty()) {
+			String photo = upfile.getOriginalFilename();
+			// 画像ファイルの保存
+			Path path = Paths.get("uploads/" + photo);
+			upfile.transferTo(path);
+		}
+
+		itemDao.insert(item);
 	}
 
 	@Override
@@ -51,7 +56,7 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public int getTotalPages(int numPerPage) throws Exception {
 		double totalNum = (double) itemDao.count();
-		return (int) Math.ceil(totalNum / numPerPage); 
+		return (int) Math.ceil(totalNum / numPerPage);
 	}
 
 	@Override
