@@ -28,7 +28,7 @@
 						</tr>
 						<tr>
 							<th>画像</th>
-							<td><img th:src="@{/uploads/{img}(img=${pict})}"></td>
+							<td><img th:src="@{/uploads/{img}(img=${item.pict})}"></td>
 						</tr>
 					</table>
 					<input type="submit" value="保存" class="btn btn-primary"> <a
@@ -42,4 +42,4 @@
 	<!-- /.container -->
 	<th:block th:replace="~{parts/common :: javascripts()}"></th:block>
 </body>
-</html>S
+</html>

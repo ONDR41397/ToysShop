@@ -21,7 +21,7 @@
 
 	<select id="update" resultType="com.example.app.domain.Item">
 		UPDATE items
-		SET name = #{name}, price = #{price}, descript = #{descript}, pict = #{pict}
+		SET name = #{name}, price = #{price}, descript = #{descript}
 		WHERE id = #{id}
 	</select>
 
