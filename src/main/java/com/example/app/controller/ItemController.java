@@ -19,12 +19,14 @@ import jakarta.validation.Valid;
 @Controller
 public class ItemController {
 
-	// 1ページ当たりの表示人数
+	// 1ページ当たりの表示件数
 	private static final int NUM_PER_PAGE = 5;
+	private static final int NUM_PER_PAGE_USER = 6;
 
 	@Autowired
 	ItemService service;
 
+	// ここから管理者操作
 	@GetMapping("/admin/itemList")
 	public String itemList(@RequestParam(name = "page", defaultValue = "1") Integer page, Model model)
 			throws Exception {
@@ -90,4 +92,30 @@ public class ItemController {
 		redirectAttributes.addFlashAttribute("message", "商品を削除しました");
 		return "redirect:/admin/itemList";
 	}
+	
+	// ここからユーザー操作
+	@GetMapping("/itemList")
+	public String userItemList(@RequestParam(name = "page", defaultValue = "1") Integer page, Model model)
+			throws Exception {
+		model.addAttribute("items", service.getItemListByPage(page, NUM_PER_PAGE_USER));
+		model.addAttribute("page", page);
+		model.addAttribute("totalPages", service.getTotalPages(NUM_PER_PAGE_USER));
+		return "user/itemList";
+	}
+	
+	@GetMapping("/detail/{id}")
+	public String detailItem(@PathVariable Integer id, Model model) throws Exception {
+		model.addAttribute("item", service.getItemById(id));
+		return "user/detail";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

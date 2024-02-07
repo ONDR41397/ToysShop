@@ -26,7 +26,7 @@
 							<th>商品説明</th>
 							<td><input type="text" th:field="*{descript}"></td>
 						</tr>
-						<tr>
+						<tr th:if="${item.pict}">
 							<th>画像</th>
 							<td><img th:src="@{/uploads/{img}(img=${item.pict})}"></td>
 						</tr>
