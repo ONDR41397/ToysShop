@@ -92,7 +92,7 @@ public class ItemController {
 		redirectAttributes.addFlashAttribute("message", "商品を削除しました");
 		return "redirect:/admin/itemList";
 	}
-	
+
 	// ここからユーザー操作
 	@GetMapping("/itemList")
 	public String userItemList(@RequestParam(name = "page", defaultValue = "1") Integer page, Model model)
@@ -104,18 +104,9 @@ public class ItemController {
 	}
 	
 	@GetMapping("/detail/{id}")
-	public String detailItem(@PathVariable Integer id, Model model) throws Exception {
+	public String detailItemGet(@PathVariable Integer id, Model model) throws Exception {
 		model.addAttribute("item", service.getItemById(id));
 		return "user/detail";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
