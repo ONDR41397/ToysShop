@@ -16,19 +16,17 @@
 		<h1 class="my-4 h3">商品一覧</h1>
 		<div class="row">
 			<div class="col-md-12">
+
+				<div class="alert alert-success" th:if="${message}">[[${message}]]</div>
+
 				<div class="flex">
 					<ul th:each="item : ${items}">
-						<li>
-							<a th:href="@{/detail/{id}(id=${item.id})}" >
-								<img th:src="@{/uploads/{img}(img=${item.pict})}">
-							</a>
-						</li>
-						<li>
-							<a th:href="@{/detail/{id}(id=${item.id})}">
-								[[${item.name}]]<br>
-								[[${item.price}]] 円
-							</a>
-						</li>
+						<li><a th:href="@{/detail/{id}(id=${item.id})}"> <img
+								th:src="@{/uploads/{img}(img=${item.pict})}">
+						</a></li>
+						<li><a th:href="@{/detail/{id}(id=${item.id})}">
+								[[${item.name}]]<br> [[${item.price}]] 円
+						</a></li>
 					</ul>
 				</div>
 
