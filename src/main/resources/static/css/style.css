@@ -1,7 +1,43 @@
 @charset "UTF-8";
 
 .error-message {
-  color: #f00;
+	color: #f00;
 }
 
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1px;
+}
 
+.flex ul {
+	margin: 15px 20px;
+}
+
+.flex li {
+	margin-top: 5px;
+	list-style-type: none;
+}
+
+.flex img {
+	width: 280px;
+	height: 230px;
+}
+
+.detail {
+	margin-top: 20px;
+}
+
+.detail li {
+	list-style-type: none;
+}
+
+.detail li label{
+	margin-bottom: 10px
+}
+
+.detail img {
+	width: 350px;
+	height: 250px; 
+	margin-bottom: 10px;
+}
