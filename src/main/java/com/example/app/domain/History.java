@@ -7,6 +7,9 @@ import lombok.Data;
 @Data
 public class History {
 
+	// No
+	private Integer no;
+	
 	// 管理者ID
 	private Integer userId;
 	

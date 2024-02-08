@@ -16,6 +16,12 @@
 		<h1 class="my-4 h3">商品一覧</h1>
 		<div class="row">
 			<div class="col-md-12">
+				<p>
+					<a th:href="@{/cart}">カートを見る</a>
+				</p>
+				<p>
+					<a th:href="@{/history}">購入履歴</a>
+				</p>
 
 				<div class="alert alert-success" th:if="${message}">[[${message}]]</div>
 

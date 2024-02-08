@@ -1,5 +1,7 @@
 package com.example.app.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.app.domain.History;
@@ -8,7 +10,8 @@ import com.example.app.domain.History;
 public interface HistoryDao {
 
 	// カートの中身情報取得
-	History cartSelectById(Integer id) throws Exception;
+	//History cartSelectById(Integer userId) throws Exception;
+	List<History> selectAll(Integer userId) throws Exception;
 	
 	// 購入商品の履歴情報取得
 	
