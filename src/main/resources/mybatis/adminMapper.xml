@@ -5,5 +5,9 @@
 	<select id="selectByLoginId" resultType="com.example.app.domain.Admins">
 		SELECT * FROM admins WHERE type = 1 AND userId = #{userId}
 	</select>
+	
+	<select id="selectByLoginIdUser" resultType="com.example.app.domain.Admins">
+		SELECT * FROM admins WHERE type = 2 AND userId = #{userId}
+	</select>
 
 </mapper>
