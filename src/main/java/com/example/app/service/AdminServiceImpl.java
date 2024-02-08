@@ -31,4 +31,21 @@ public class AdminServiceImpl implements AdminService {
 		return true;
 	}
 
+	@Override
+	public boolean isCorrectIdAndPasswordUser(String userId, String pass) throws Exception {
+		Admins admin = dao.selectByLoginIdUser(userId);
+
+		// ログインIDチェック
+		if (admin == null) {
+			return false;
+		}
+
+		// パスワードチェック
+		if (!BCrypt.checkpw(pass, admin.getPass())) {
+			return false;
+		}
+
+		return true;
+	}
+
 }

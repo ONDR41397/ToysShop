@@ -47,5 +47,34 @@ public class AdminController {
 		session.invalidate();
 		return "redirect:/admin";
 	}
+	
+	@GetMapping()
+	public String loginGet(Model model) throws Exception {
+		model.addAttribute("admins", new Admins());
+		return "user/login";
+	}
+	
+	@PostMapping()
+	public String loginPost(@Valid Admins admins, Errors errors, HttpSession session) throws Exception {
+		
+		if(errors.hasErrors()) {
+			return "user/login";
+		}
+		
+		if(!service.isCorrectIdAndPasswordUser(admins.getUserId(), admins.getPass())) {
+			errors.rejectValue("userId", "error.incorrect_id_password");
+			return "user/login";
+		}
+		
+		session.setAttribute("userId", admins.getUserId());
+		return "redirect:/itemList";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) throws Exception {
+		// セッションの破棄
+		session.invalidate();
+		return "redirect:/";
+	}
 
 }
