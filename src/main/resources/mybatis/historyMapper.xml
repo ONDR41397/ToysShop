@@ -3,15 +3,25 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.app.dao.HistoryDao">
 
-	<select id="cartSelectById" parameterType="int" resultType="com.example.app.domain.History">
+	<select id="selectAll" resultType="com.example.app.domain.Item">
 		SELECT
 		historys.userId, admins.name, admins.userId, historys.itemId,
 		items.name, items.price, items.descript, items.pict
 		FROM toysshopdb.historys
 		JOIN items ON historys.itemId = items.id
 		JOIN admins ON historys.userId = admins.id
-		WHERE historys.cart = 1 AND historys.userId = #{id};
+		WHERE historys.cart = 1 AND historys.userId = #{id}
 	</select>
+
+	<!-- <select id="cartSelectById" resultType="com.example.app.domain.History">
+		SELECT
+		historys.userId, admins.name, admins.userId, historys.itemId,
+		items.name, items.price, items.descript, items.pict
+		FROM toysshopdb.historys
+		JOIN items ON historys.itemId = items.id
+		JOIN admins ON historys.userId = admins.id
+		WHERE historys.cart = 1 AND historys.userId = #{id}
+	</select> -->
 	
 	<select id="addCart" parameterType="int" resultType="com.example.app.domain.History">
 		INSERT INTO historys (userId, itemId, cart)

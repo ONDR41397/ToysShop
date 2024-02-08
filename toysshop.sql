@@ -33,7 +33,9 @@ INSERT INTO `toysshopdb`.`items` (`id`, `name`, `price`, `descript`, `status`, `
 
 # historysテーブル作成
 CREATE TABLE `toysshopdb`.`historys` (
+  `no` INT NOT NULL AUTO_INCREMENT FIRST,
   `userId` INT NOT NULL,
   `itemId` INT NOT NULL,
   `cart` INT NOT NULL DEFAULT 0,
-  `purchaseDate` DATETIME NULL);
+  `purchaseDate` DATETIME NULL,
+  PRIMARY KEY (`no`));
