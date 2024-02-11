@@ -7,8 +7,16 @@ import com.example.app.domain.Item;
 public interface ItemService {
 
 	List<Item> getItemList() throws Exception;
+	
+	List<Item> getCartItems(Integer buyer) throws Exception;
+	
+	Item addCartItem(Integer buyer, Integer id) throws Exception;
 
 	Item getItemById(Integer id) throws Exception;
+	
+	void cancelItem(Integer id) throws Exception;
+	
+	void addPurchaseRegist(Integer id) throws Exception;
 
 	void addItem(Item item) throws Exception;
 
