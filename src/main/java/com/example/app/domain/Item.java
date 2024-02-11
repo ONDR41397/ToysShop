@@ -39,4 +39,10 @@ public class Item {
 	
 	// 画像のアップロード
 	private MultipartFile upfile;
+	
+	// 購入者情報
+	private Admins buyer;
+	
+	// 購入有無
+	private Integer purchase;
 }

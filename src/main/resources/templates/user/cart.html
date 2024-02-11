@@ -14,20 +14,23 @@
 		<h1 class="my-4 h3">カート</h1>
 		<div class="row">
 			<div class="col-md-12">
-				<table class="table table-bordered">
-					<tr>
-						<th>商品名</th>
-						<th>価格</th>
-						<th>購入</th>
-						<th>キャンセル</th>
-					</tr>
-					<tr>
-						<td>商品A</td>
-						<td>360円</td>
-						<td><a href="" class="btn btn-success btn-sm">編集</a></td>
-						<td><a href="" class="btn btn-danger btn-sm delete">削除</a></td>
-					</tr>
-				</table>
+				<div class="alert alert-success" th:if="${message}">[[${message}]]</div>
+				<form action="" method="post">
+					<table class="table table-bordered">
+						<tr>
+							<th>商品名</th>
+							<th>価格</th>
+							<th>購入</th>
+							<th>キャンセル</th>
+						</tr>
+						<tr th:each="items : ${carInfo}">
+							<td>[[${items.name}]]</td>
+							<td>[[${items.price}]]円</td>
+							<td><a th:href="@{/purchaseItem/{id}(id=${items.id})}" class="btn btn-success btn-sm">購入</a></td>
+							<td><a th:href="@{/cancel/{id}(id=${items.id})}" class="btn btn-danger btn-sm delete">キャンセル</a></td>
+						</tr>
+					</table>
+				</form>
 				<p>
 					<a th:href="@{/itemList}" class="btn btn-light">商品一覧へ戻る</a>
 				</p>

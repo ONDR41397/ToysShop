@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.app.domain.Admins;
 import com.example.app.domain.Item;
 import com.example.app.service.ItemService;
 
@@ -108,5 +109,34 @@ public class ItemController {
 		model.addAttribute("item", service.getItemById(id));
 		return "user/detail";
 	}
+	
+	@PostMapping("/detail/{id}")
+	public String detailItemPost(@PathVariable Integer id, Model model, RedirectAttributes redirectAttributes) throws Exception {
+
+		service.addCartItem(2, id); //管理者IDは仮設定
+		redirectAttributes.addFlashAttribute("message", "商品をカートに追加しました");
+		return "redirect:/itemList";
+	}
+	
+	@GetMapping("/cart")
+	public String cartGet(Model model, Admins admins) throws Exception {
+		model.addAttribute("carInfo", service.getCartItems(2));
+		return "user/cart";
+	}
+	
+	@GetMapping("/purchaseItem/{id}")
+	public String cartPost(@PathVariable Integer id) throws Exception {
+		service.addPurchaseRegist(id);
+		return "user/purchaseItem";
+	}
+	
+	@GetMapping("/cancel/{id}")
+	public String cancelItem(@PathVariable Integer id, RedirectAttributes redirectAttributes)
+			throws Exception {
+		service.cancelItem(id);
+		redirectAttributes.addFlashAttribute("message", "商品をキャンセルしました");
+		return "redirect:/cart";
+	}
+	
 
 }

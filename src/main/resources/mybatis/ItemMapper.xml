@@ -3,25 +3,44 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.app.dao.ItemDao">
 
+	<resultMap id="joinedResult"
+		type="com.example.app.domain.Item">
+		<id property="id" column="itemId" />
+		<result property="name" column="itemName" />
+		<result property="price" column="price" />
+		<result property="descript" column="descript" />
+		<result property="pict" column="pict" />
+		<association property="buyer" column="buyer"
+			javaType="com.example.app.domain.Admins">
+			<id property="id" column="id" />
+			<result property="name" column="name" />
+			<result property="userId" column="userId" />
+		</association>
+	</resultMap>
+
 	<select id="selectAll" resultType="com.example.app.domain.Item">
 		SELECT * FROM items WHERE
 		status = 'ACT';
 	</select>
 
-	<select id="selectById" parameterType="int" resultType="com.example.app.domain.Item">
-		SELECT name, price, descript, pict FROM items WHERE status = 'ACT'
+	<select id="selectById" parameterType="int"
+		resultType="com.example.app.domain.Item">
+		SELECT name, price, descript, pict FROM items WHERE status
+		= 'ACT'
 		AND id = #{id}
 	</select>
 
 	<select id="insert" resultType="com.example.app.domain.Item">
 		INSERT INTO items (name, price,
 		descript, pict, status, created)
-		VALUES (#{name}, #{price}, #{descript}, #{pict}, 'ACT', NOW())
+		VALUES (#{name}, #{price},
+		#{descript}, #{pict}, 'ACT', NOW())
 	</select>
 
 	<select id="update" resultType="com.example.app.domain.Item">
 		UPDATE items
-		SET name = #{name}, price = #{price}, descript = #{descript}
+		SET name = #{name},
+		price = #{price}, descript = #{descript}
 		WHERE id = #{id}
 	</select>
 
@@ -36,7 +55,42 @@
 	</select>
 	<select id="selectLimited"
 		resultType="com.example.app.domain.Item">
-		SELECT * FROM items WHERE status = 'ACT' LIMIT #{offset}, #{num}
+		SELECT * FROM items WHERE status = 'ACT' LIMIT #{offset},
+		#{num}
+	</select>
+
+	<select id="cartSelectById" parameterType="INT"
+		resultMap="joinedResult">
+		SELECT
+		admins.id, admins.name, admins.userId, items.id AS
+		itemId,
+		items.name AS itemName, items.price,
+		items.descript, items.pict
+		FROM items
+		JOIN admins ON admins.id = items.buyer
+		WHERE items.buyer =
+		#{buyer}
+	</select>
+
+	<select id="addCart" parameterType="int"
+		resultType="com.example.app.domain.Item">
+		UPDATE items
+		SET buyer = #{buyer}, purchase = 0 
+		WHERE id = #{id}
+	</select>
+	
+	<select id="purchaseRegist" parameterType="int"
+		resultType="com.example.app.domain.Item">
+		UPDATE items
+		SET purchase = 1, buyer = 0
+		WHERE id = #{id}
+	</select>
+	
+		<select id="cancelItem" parameterType="int"
+		resultType="com.example.app.domain.Item">
+		UPDATE items
+		SET purchase = 0, buyer = 0
+		WHERE id = #{id}
 	</select>
 
 </mapper>	

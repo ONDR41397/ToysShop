@@ -67,4 +67,24 @@ public class ItemServiceImpl implements ItemService {
 		return itemDao.selectLimited(offset, numPerPage);
 	}
 
+	@Override
+	public List<Item> getCartItems(Integer buyer) throws Exception {
+		return itemDao.cartSelectById(buyer);
+	}
+
+	@Override
+	public Item addCartItem(Integer userId, Integer itemId) throws Exception {
+		return itemDao.addCart(userId, itemId);
+	}
+
+	@Override
+	public void addPurchaseRegist(Integer id) throws Exception {
+		itemDao.purchaseRegist(id);
+	}
+
+	@Override
+	public void cancelItem(Integer id) throws Exception {
+		itemDao.cancelItem(id);
+	}
+
 }

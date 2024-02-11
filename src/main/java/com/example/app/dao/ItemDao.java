@@ -12,10 +12,22 @@ public interface ItemDao {
 
 	// 全ての商品情報を取得
 	List<Item> selectAll() throws Exception;
+	
+	// 商品のカート追加
+	Item addCart(Integer buyer, Integer id) throws Exception;
+	
+	// カート情報を取得
+	List<Item> cartSelectById(Integer buyer) throws Exception;
+	
+	// カートから商品キャンセル
+	void cancelItem(Integer id) throws Exception;
+	
+	// 購入登録
+	void purchaseRegist(Integer id) throws Exception;
 
 	// 指定した商品IDの情報のみ取得
 	Item selectById(Integer id) throws Exception;
-
+	
 	// 商品の追加
 	void insert(Item item) throws Exception;
 

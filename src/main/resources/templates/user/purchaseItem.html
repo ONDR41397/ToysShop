@@ -11,16 +11,13 @@
 				</ul>
 			</nav>
 		</header>
-		<h1 class="my-4 h3">購入履歴</h1>
+		<h1 class="my-4 h3">購入完了</h1>
 		<div class="row">
 			<div class="col-md-12">
-				<div class="flex">
-					<ul>
-						<li>画像</li>
-						<li>商品名</li>
-						<li>購入日</li>
-					</ul>
-				</div>
+				<div class="alert alert-success" th:if="${message}">[[${message}]]</div>
+				<p>
+					ご購入ありがとうございます。<br> 商品が購入されました。
+				</p>
 				<p>
 					<a th:href="@{/itemList}" class="btn btn-light">商品一覧へ戻る</a>
 				</p>
