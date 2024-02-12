@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.app.domain.Admins;
 import com.example.app.domain.Item;
 import com.example.app.service.ItemService;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
@@ -111,16 +111,18 @@ public class ItemController {
 	}
 	
 	@PostMapping("/detail/{id}")
-	public String detailItemPost(@PathVariable Integer id, Model model, RedirectAttributes redirectAttributes) throws Exception {
+	public String detailItemPost(@PathVariable Integer id, Model model, RedirectAttributes redirectAttributes, HttpSession session) throws Exception {
 
-		service.addCartItem(2, id); //管理者IDは仮設定
+		String userId = (String) session.getAttribute("userId");
+		service.addCartItem(userId, id);
 		redirectAttributes.addFlashAttribute("message", "商品をカートに追加しました");
 		return "redirect:/itemList";
 	}
 	
 	@GetMapping("/cart")
-	public String cartGet(Model model, Admins admins) throws Exception {
-		model.addAttribute("carInfo", service.getCartItems(2));
+	public String cartGet(Model model, HttpSession session) throws Exception {
+		String userId = (String) session.getAttribute("userId");
+		model.addAttribute("carInfo", service.getCartItems(userId));
 		return "user/cart";
 	}
 	

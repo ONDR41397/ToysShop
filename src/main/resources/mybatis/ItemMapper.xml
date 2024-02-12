@@ -59,7 +59,7 @@
 		#{num}
 	</select>
 
-	<select id="cartSelectById" parameterType="INT"
+	<select id="cartSelectById"
 		resultMap="joinedResult">
 		SELECT
 		admins.id, admins.name, admins.userId, items.id AS
@@ -67,12 +67,12 @@
 		items.name AS itemName, items.price,
 		items.descript, items.pict
 		FROM items
-		JOIN admins ON admins.id = items.buyer
+		JOIN admins ON admins.userId = items.buyer
 		WHERE items.buyer =
 		#{buyer}
 	</select>
 
-	<select id="addCart" parameterType="int"
+	<select id="addCart"
 		resultType="com.example.app.domain.Item">
 		UPDATE items
 		SET buyer = #{buyer}, purchase = 0 
@@ -82,14 +82,14 @@
 	<select id="purchaseRegist" parameterType="int"
 		resultType="com.example.app.domain.Item">
 		UPDATE items
-		SET purchase = 1, buyer = 0
+		SET purchase = 1, buyer = 'none'
 		WHERE id = #{id}
 	</select>
 	
-		<select id="cancelItem" parameterType="int"
+	<select id="cancelItem" parameterType="int"
 		resultType="com.example.app.domain.Item">
 		UPDATE items
-		SET purchase = 0, buyer = 0
+		SET purchase = 0, buyer = 'none'
 		WHERE id = #{id}
 	</select>
 
