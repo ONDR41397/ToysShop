@@ -8,9 +8,9 @@ public interface ItemService {
 
 	List<Item> getItemList() throws Exception;
 	
-	List<Item> getCartItems(Integer buyer) throws Exception;
+	List<Item> getCartItems(String buyer) throws Exception;
 	
-	Item addCartItem(Integer buyer, Integer id) throws Exception;
+	Item addCartItem(String buyer, Integer id) throws Exception;
 
 	Item getItemById(Integer id) throws Exception;
 	

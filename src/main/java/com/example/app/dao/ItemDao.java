@@ -14,10 +14,10 @@ public interface ItemDao {
 	List<Item> selectAll() throws Exception;
 	
 	// 商品のカート追加
-	Item addCart(Integer buyer, Integer id) throws Exception;
+	Item addCart(String buyer, Integer id) throws Exception;
 	
 	// カート情報を取得
-	List<Item> cartSelectById(Integer buyer) throws Exception;
+	List<Item> cartSelectById(String buyer) throws Exception;
 	
 	// カートから商品キャンセル
 	void cancelItem(Integer id) throws Exception;
