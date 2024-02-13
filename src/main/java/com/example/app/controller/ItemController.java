@@ -74,7 +74,7 @@ public class ItemController {
 
 	@PostMapping("/admin/editItem/{id}")
 	public String editItemPost(@PathVariable Integer id, @Valid Item item, Errors errors,
-			RedirectAttributes redirectAttributes) throws Exception {
+			RedirectAttributes redirectAttributes, Model model) throws Exception {
 
 		if (errors.hasErrors()) {
 			return "admin/editItem";

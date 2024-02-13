@@ -12,6 +12,7 @@
 						<small class="alert alert-danger" th:errors="*{name}"></small> <small
 							class="alert alert-danger" th:errors="*{price}"></small> <small
 							class="alert alert-danger" th:errors="*{descript}"></small>
+							
 					</p>
 					<table class="table table-bordered">
 						<tr>
@@ -26,9 +27,9 @@
 							<th>商品説明</th>
 							<td><input type="text" th:field="*{descript}"></td>
 						</tr>
-						<tr th:if="${item.pict}">
+						<tr th:if="*{pict}">
 							<th>画像</th>
-							<td><img th:src="@{/uploads/{img}(img=${item.pict})}"></td>
+							<td><img th:src="@{/uploads/{img}(img=*{pict})}"></td>
 						</tr>
 					</table>
 					<input type="submit" value="保存" class="btn btn-primary"> <a
