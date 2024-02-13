@@ -25,16 +25,15 @@
 
 	<select id="selectById" parameterType="int"
 		resultType="com.example.app.domain.Item">
-		SELECT name, price, descript, pict FROM items WHERE status
-		= 'ACT'
-		AND id = #{id}
+		SELECT name, price, descript, pict FROM items
+		WHERE id = #{id}
 	</select>
 
 	<select id="insert" resultType="com.example.app.domain.Item">
 		INSERT INTO items (name, price,
-		descript, pict, status, created)
+		descript, pict, created)
 		VALUES (#{name}, #{price},
-		#{descript}, #{pict}, 'ACT', NOW())
+		#{descript}, #{pict}, NOW())
 	</select>
 
 	<select id="update" resultType="com.example.app.domain.Item">
@@ -45,9 +44,8 @@
 	</select>
 
 	<select id="delete" resultType="com.example.app.domain.Item">
-		UPDATE items
-		SET status = 'DEL'
-		WHERE status = 'ACT' AND id = #{id}
+		DELETE FROM items
+		WHERE id = #{id}
 	</select>
 
 	<select id="count" resultType="long">
@@ -55,7 +53,7 @@
 	</select>
 	<select id="selectLimited"
 		resultType="com.example.app.domain.Item">
-		SELECT * FROM items WHERE status = 'ACT' LIMIT #{offset},
+		SELECT * FROM items LIMIT #{offset},
 		#{num}
 	</select>
 

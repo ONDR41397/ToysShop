@@ -27,7 +27,6 @@ CREATE TABLE `items` (
   `price` varchar(10) NOT NULL,
   `descript` varchar(300) NOT NULL,
   `pict` varchar(300) DEFAULT NULL,
-  `status` char(3) NOT NULL DEFAULT 'ACT',
   `created` datetime NOT NULL,
   `buyer` varchar(20) NOT NULL DEFAULT 'none',
   `purchase` int NOT NULL DEFAULT '0',
@@ -37,9 +36,9 @@ CREATE TABLE `items` (
 # itemsテーブル、データ追加
 INSERT INTO `items` 
 VALUES (1,'商品A','389','これは商品Aです','tomica.jpg','ACT','2024-02-06 16:31:59','none',0),
-(2,'商品B','5690','これは商品Bです','lego.jpg','ACT','2024-02-06 17:43:57','none',0),
-(3,'商品C','10000','これは商品Cです','ラジコン.jpg','ACT','2024-02-06 17:44:53','none',0),
-(4,'商品D','1000','これは商品Dです',NULL,'ACT','2024-02-13 00:00:00','none',0),
-(5,'商品E','3890','これは商品Eです',NULL,'ACT','2024-02-13 00:00:00','none',0),
-(6,'商品F','380','これは商品Fです',NULL,'ACT','2024-02-13 00:00:00','none',0),
-(7,'商品G','150','これは商品Gです',NULL,'ACT','2024-02-13 00:00:00','none',0);
+(2,'商品B','5690','これは商品Bです','lego.jpg','2024-02-06 17:43:57','none',0),
+(3,'商品C','10000','これは商品Cです','ラジコン.jpg','2024-02-06 17:44:53','none',0),
+(4,'商品D','1000','これは商品Dです',NULL,'2024-02-13 00:00:00','none',0),
+(5,'商品E','3890','これは商品Eです',NULL,'2024-02-13 00:00:00','none',0),
+(6,'商品F','380','これは商品Fです',NULL,'2024-02-13 00:00:00','none',0),
+(7,'商品G','150','これは商品Gです',NULL,'2024-02-13 00:00:00','none',0);
