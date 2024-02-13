@@ -2,9 +2,11 @@ package com.example.app.domain;
 
 import java.util.Date;
 
+import org.hibernate.validator.constraints.Range;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -20,8 +22,9 @@ public class Item {
 	private String name;
 	
 	// 価格
-	@NotBlank
-	private String price;
+	@NotNull
+	@Range(min = 1, max = 99999999)
+	private Integer price;
 	
 	// 商品説明
 	@NotBlank
