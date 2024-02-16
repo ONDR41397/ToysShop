@@ -24,5 +24,11 @@
 |/cart | カート画面 |
 |/purchaseItem | 購入完了画面 |
 
+## 確認用ログイン情報
+| 権限 | ユーザーID | パスワード |
+|:-----:|:-----:|:-----:|
+| 管理者 | taro@abc.com | taro |
+| ユーザー | jiro@abc.com | jiro |
+
 ## その他
 データベースの作成、及び初期データを投入するためのSQLは「src/main/resources/sql」内に格納されています。
