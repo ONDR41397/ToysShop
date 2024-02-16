@@ -27,8 +27,8 @@
 ## 確認用ログイン情報
 | 権限 | ユーザーID | パスワード |
 |:-----:|:-----:|:-----:|
-| 管理者 | taro@abc.com | taro |
-| ユーザー | jiro@abc.com | jiro |
+| 管理者 | <foo>taro</foo>@abc.com | taro |
+| ユーザー | <foo>jiro</foo>@abc.com | jiro |
 
 ## その他
 データベースの作成、及び初期データを投入するためのSQLは「src/main/resources/sql」内に格納されています。
